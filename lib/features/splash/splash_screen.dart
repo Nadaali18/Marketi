@@ -26,7 +26,7 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Center(
-        child: TweenAnimationBuilder<dynamic>(
+        child: TweenAnimationBuilder<double>(
               tween: Tween(begin: 0, end: 300), 
               duration: Duration(seconds: 3),
               curve: Curves.easeOut,
