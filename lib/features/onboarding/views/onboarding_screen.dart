@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:marketi/core/helpers/colors.dart';
 import 'package:marketi/core/helpers/routes.dart';
-import 'package:marketi/core/widgets/custom_text.dart';
+import 'package:marketi/core/widgets/custom_elevated_button.dart';
+import 'package:marketi/core/widgets/custom_icon_button.dart';
 import 'package:marketi/features/onboarding/widgets/content_list.dart';
 
 class OnboardingScreen extends StatefulWidget {
@@ -33,22 +33,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(
-            padding: const EdgeInsets.all(15),
-            child: IconButton.outlined(
-              onPressed: (){
-                context.go(Routes.login);
-              }, 
-              icon: CustomText('Skip',color: secondColor,fontSize: 20,),
-              style: ButtonStyle(
-                shape: WidgetStateProperty.all(RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15),
-                )),
-                side: WidgetStateProperty.all(BorderSide(
-                color: dotColor.withValues(alpha: 178),
-                )),),
-            ),
-          ),
+          CustomIconButton(),
           Expanded(
             child: PageView.builder(
                  controller: controller,
@@ -61,37 +46,20 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                  itemBuilder: (context, index) => onboardingContent(currentIndex)[index],
             ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(20),
-              child: SizedBox(
-                width: double.infinity,
-                height: 60,
-                child: ElevatedButton(
-                 onPressed: (){
-                  if (currentIndex == onboardingContent(currentIndex).length - 1) {
-                    context.go(Routes.login);
-                  }
-                  controller!.nextPage(
-                    duration: Duration(milliseconds: 350),
-                    curve: Curves.easeIn,
-                  );
-                 },
-                 style: ElevatedButton.styleFrom(
-                  backgroundColor: secondColor,
-                  foregroundColor: Colors.white,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(14),
-                  )
-                 ),
-                 child: CustomText(
-                  currentIndex == onboardingContent(currentIndex).length - 1 ? 'Get Start' : 'Next',
-                  fontSize: 18,
-                  ),
-                  ),
-              ),
-            ),
+            CustomElevatedButton(
+              text:  currentIndex == onboardingContent(currentIndex).length - 1 ? 'Get Start' : 'Next',
+              function: (){
+                if (currentIndex == onboardingContent(currentIndex).length - 1) {
+                context.go(Routes.login);
+              }
+                controller!.nextPage(
+                  duration: Duration(milliseconds: 350),
+                  curve: Curves.easeIn,
+              );
+            },currentIndex: currentIndex, controller: controller),
         ],
       ),
     );
   }
 }
+

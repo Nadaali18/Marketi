@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:marketi/core/helpers/colors.dart';
 import 'package:marketi/core/widgets/custom_text.dart';
 import 'package:marketi/features/onboarding/widgets/content_list.dart';
+import 'package:marketi/features/onboarding/widgets/dot_indicator.dart';
 
 class OnBoardingBody extends StatelessWidget {
   const OnBoardingBody({super.key,required this.title,required this.image,required this.discription, required this.currentIndex});
@@ -24,15 +25,7 @@ final int currentIndex;
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: List.generate(
                     onboardingContent(currentIndex).length,
-                    (index) => Container(
-                      height: 10,
-                      width: currentIndex == index ? 25 : 10,
-                      margin: EdgeInsets.only(right: 5),
-                      decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      color: currentIndex == index ? primaryColor : dotColor,
-                   ),
-                  ),
+                    (index) => DotIndicator(currentIndex: currentIndex,index: index,),
                   ),
                 ),
                 SizedBox(height: 10,),
@@ -54,3 +47,4 @@ final int currentIndex;
         );
   }
 }
+

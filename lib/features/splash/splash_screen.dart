@@ -8,7 +8,6 @@ class SplashScreen extends StatefulWidget {
   @override
   State<SplashScreen> createState() => _SplashScreenState();
 }
-
 class _SplashScreenState extends State<SplashScreen> {
  @override
   void initState() {
@@ -22,12 +21,11 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    
     return Scaffold(
       backgroundColor: Colors.white,
       body: Center(
         child: TweenAnimationBuilder<double>(
-              tween: Tween(begin: 0, end: 300), 
+              tween: Tween(begin: 0, end: 200), 
               duration: Duration(seconds: 3),
               curve: Curves.easeOut,
               builder: (context, size, child) {
