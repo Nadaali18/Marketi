@@ -5,13 +5,13 @@ import 'package:marketi/core/widgets/custom_text.dart';
 class CustomElevatedButton extends StatelessWidget {
   const CustomElevatedButton({
     super.key,
-    required this.currentIndex,
-    required this.controller,
+     this.currentIndex,
+     this.controller,
     required this.text,
     required this.function,
   });
 
-  final int currentIndex;
+  final int? currentIndex;
   final PageController? controller;
   final String text;
   final Function() function;
@@ -22,7 +22,7 @@ class CustomElevatedButton extends StatelessWidget {
       padding: const EdgeInsets.all(20),
       child: SizedBox(
         width: double.infinity,
-        height: 60,
+        height: 50,
         child: ElevatedButton(
          onPressed: function,
          style: ElevatedButton.styleFrom(

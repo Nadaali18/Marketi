@@ -18,7 +18,7 @@ final int currentIndex;
               children: [
                 Image.asset(
                   image,
-                  height: 250,
+                  height: 200,
                 ),
                 SizedBox(height: 10,),
                 Row(
@@ -31,7 +31,7 @@ final int currentIndex;
                 SizedBox(height: 10,),
                 CustomText(
                   title,
-                  fontSize: 35,
+                  fontSize: 30,
                   fontWeight: FontWeight.bold,
                   color: primaryColor,
                 ),

@@ -8,25 +8,29 @@ import 'package:marketi/core/widgets/custom_text.dart';
 class CustomIconButton extends StatelessWidget {
   const CustomIconButton({
     super.key,
+    this.icon,
+    this.text,
+    this.image,
+    required this.value
   });
-
+final String? text;
+final Widget? icon;
+final String? image;
+final double value;
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(15),
-      child: IconButton.outlined(
-        onPressed: (){
-          context.go(Routes.login);
-        }, 
-        icon: CustomText('Skip',color: secondColor,fontSize: 20,),
-        style: ButtonStyle(
-          shape: WidgetStateProperty.all(RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15),
-          )),
-          side: WidgetStateProperty.all(BorderSide(
-          color: dotColor.withValues(alpha: 178),
-          )),),
-      ),
+    return IconButton.outlined(
+      onPressed: (){
+        context.go(Routes.login);
+      }, 
+      icon: text!= null ? CustomText(text,color: secondColor,fontSize: 20,) : icon!,
+      style: ButtonStyle(
+        shape: WidgetStateProperty.all(RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(value),
+        )),
+        side: WidgetStateProperty.all(BorderSide(
+        color: dotColor.withValues(alpha: 178),
+        )),),
     );
   }
 }

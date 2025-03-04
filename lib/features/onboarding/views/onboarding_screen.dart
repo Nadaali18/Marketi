@@ -33,7 +33,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          CustomIconButton(),
+          Padding(
+            padding: const EdgeInsets.all(15),
+            child: CustomIconButton(text: 'Skip',value: 15,),
+          ),
           Expanded(
             child: PageView.builder(
                  controller: controller,
@@ -46,19 +49,20 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                  itemBuilder: (context, index) => onboardingContent(currentIndex)[index],
             ),
             ),
-            CustomElevatedButton(
-              text:  currentIndex == onboardingContent(currentIndex).length - 1 ? 'Get Start' : 'Next',
-              function: (){
-                if (currentIndex == onboardingContent(currentIndex).length - 1) {
-                context.go(Routes.login);
-              }
-                controller!.nextPage(
-                  duration: Duration(milliseconds: 350),
-                  curve: Curves.easeIn,
-              );
-            },currentIndex: currentIndex, controller: controller),
+            
         ],
       ),
+      bottomNavigationBar: CustomElevatedButton(
+                text:  currentIndex == onboardingContent(currentIndex).length - 1 ? 'Get Start' : 'Next',
+                function: (){
+                  if (currentIndex == onboardingContent(currentIndex).length - 1) {
+                  context.go(Routes.login);
+                }
+                  controller!.nextPage(
+                    duration: Duration(milliseconds: 350),
+                    curve: Curves.easeIn,
+                );
+              },currentIndex: currentIndex, controller: controller),
     );
   }
 }
