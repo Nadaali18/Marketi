@@ -1,7 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:marketi/features/login/views/login_screen.dart';
 import 'package:marketi/features/onboarding/views/onboarding_screen.dart';
-import 'package:marketi/features/signUp/views/signup.dart';
+import 'package:marketi/features/signUp/views/signup_screen.dart';
 import 'package:marketi/features/splash/splash_screen.dart';
 
 class Routes {

@@ -13,8 +13,7 @@ class LoginBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SingleChildScrollView(
+    return SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -35,7 +34,6 @@ class LoginBody extends StatelessWidget {
             CustomRoww(text: 'Are you new in Marketi ', text1:'register?',function: () => context.go(Routes.signUp),),
           ],
           ),
-      ),
     );
   }
 }
