@@ -15,7 +15,10 @@ final String? text;
 }
 
 class _CustomTextFormFieldState extends State<CustomTextFormField> {
+
 bool obscure = false;
+final key = GlobalKey();
+FormFieldValidator<String>? function;
 
   @override
   Widget build(BuildContext context) {
@@ -28,27 +31,31 @@ bool obscure = false;
           SizedBox(
             width: double.infinity,
             height: 50,
-            child: TextFormField(
-              cursorColor: secondColor,
-              obscureText: obscure,
-              decoration: InputDecoration(
-                prefixIcon: Icon(widget.iconPre,color: Colors.black,size: 15,),
-                suffixIcon: IconButton(
-                  icon: Icon(obscure ? widget.iconSuf : widget.iconSuf1,color: Colors.black,size: 15,),
-                  onPressed: (){
-                  setState(() {
-                    obscure = !obscure;
-                  });
-                }, ),
-                hintText: widget.hintText,
-                hintStyle: TextStyle(color: hintTextColor),
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(15),
-                  borderSide: BorderSide(color: dotColor.withValues(alpha: 178),width: 2),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(15),
-                  borderSide: BorderSide(color: dotColor.withValues(alpha: 178),width: 2),
+            child: Form(
+              key: key,
+              child: TextFormField(
+                cursorColor: secondColor,
+                obscureText: obscure,
+                validator: function,
+                decoration: InputDecoration(
+                  prefixIcon: Icon(widget.iconPre,color: Colors.black,size: 15,),
+                  suffixIcon: IconButton(
+                    icon: Icon(obscure ? widget.iconSuf : widget.iconSuf1,color: Colors.black,size: 15,),
+                    onPressed: (){
+                    setState(() {
+                      obscure = !obscure;
+                    });
+                  }, ),
+                  hintText: widget.hintText,
+                  hintStyle: TextStyle(color: hintTextColor),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15),
+                    borderSide: BorderSide(color: dotColor.withValues(alpha: 178),width: 2),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15),
+                    borderSide: BorderSide(color: dotColor.withValues(alpha: 178),width: 2),
+                  ),
                 ),
               ),
             ),
