@@ -3,14 +3,14 @@ import 'package:marketi/core/helpers/colors.dart';
 import 'package:marketi/core/widgets/custom_text.dart';
 
 class CustomTextFormField extends StatefulWidget {
-  const CustomTextFormField({super.key,this.function,this.text,required this.hintText,this.iconPre,this.iconSuf,this.iconSuf1});
+  const CustomTextFormField({super.key,this.controller,this.function,this.text,required this.hintText,this.iconPre,this.iconSuf,this.iconSuf1});
 final IconData? iconPre;
 final IconData? iconSuf;
 final IconData? iconSuf1;
 final String hintText;
 final String? text;
 final FormFieldValidator<String>? function;
-
+final TextEditingController? controller;
   @override
   State<CustomTextFormField> createState() => _CustomTextFormFieldState();
 }
@@ -35,6 +35,7 @@ bool obscure = false;
               cursorColor: secondColor,
               obscureText: obscure,
               validator: widget.function,
+              controller: widget.controller,
               autovalidateMode: AutovalidateMode.onUserInteraction,
               decoration: InputDecoration(
                 prefixIcon: Icon(widget.iconPre,color: Colors.black,size: 15,),

@@ -6,11 +6,12 @@ class RegexHelper {
   static String? validateName(String? name) {
     if (name == null || name.isEmpty) {
       return 'Name is required';
-    } else if (!RegExp(r'^[a-zA-Z]{2,}$').hasMatch(name)) {
-      return 'Name must contain only letters and be at least 2 characters long';
+    } else if (!RegExp(r'^[A-Z][a-zA-Z ]{1,}$').hasMatch(name)) {
+      return 'Name must start with a capital letter and contain only letters and spaces';
     }
-    return null;
-  }
+    return null; 
+}
+
 
   static String? validateUsername(String? username) {
     if (username == null || username.isEmpty) {
@@ -47,6 +48,24 @@ class RegexHelper {
     }
     return null;
   }
+ 
+  static String? validateConfirmPassword(String? confirmPassword, String? originalPassword) {
+    if (confirmPassword == null || confirmPassword.isEmpty) {
+      return 'Confirmation password is required';
+    } else if (confirmPassword != originalPassword) {
+      return 'Passwords do not match';
+    }
+      return null;
+  }
+
+  static String? validatePhoneNumber(String? phone) {
+    if (phone == null || phone.isEmpty) {
+      return 'Phone number is required';
+    } else if (!RegExp(r'^\+?[0-9]{10,15}$').hasMatch(phone)) {
+      return 'Enter a valid phone number (10-15 digits, optional + at the start)';
+    }
+    return null;
+  }
 
   static void submitForm(GlobalKey<FormState> key, BuildContext context, String location) {
     if (key.currentState == null || !key.currentState!.validate()) {
@@ -54,8 +73,6 @@ class RegexHelper {
     }
       key.currentState!.save();
       context.go(location);
-}
-
-  
+  }
 
 }
