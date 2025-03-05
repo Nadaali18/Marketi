@@ -35,6 +35,7 @@ bool obscure = false;
               cursorColor: secondColor,
               obscureText: obscure,
               validator: widget.function,
+              autovalidateMode: AutovalidateMode.onUserInteraction,
               decoration: InputDecoration(
                 prefixIcon: Icon(widget.iconPre,color: Colors.black,size: 15,),
                 suffixIcon: IconButton(

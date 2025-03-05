@@ -7,7 +7,7 @@ import 'package:marketi/core/widgets/custom_elevated_button.dart';
 import 'package:marketi/core/widgets/custom_icon_button.dart';
 import 'package:marketi/core/widgets/custom_roww.dart';
 import 'package:marketi/core/widgets/custom_text_form_field.dart';
-import 'package:marketi/features/login/widgets/custom_row.dart';
+import 'package:marketi/features/auth/login/widgets/custom_row.dart';
 
 class LoginBody extends StatefulWidget {
   const LoginBody({super.key});
@@ -44,7 +44,7 @@ class _LoginBodyState extends State<LoginBody> {
                 ),
               SizedBox(height: 3,),
               CustomRow(),
-              CustomElevatedButton(text: 'Log in', function:() => RegexHelper.submitForm(key,context,Routes.home)),
+              CustomElevatedButton(text: 'Log in', function:() => RegexHelper.submitForm(key,context,Routes.home),),
               CustomColumn(),
               SizedBox(height: 5,),
               CustomRoww(text: 'Are you new in Marketi ', text1:'register?',function: () => context.go(Routes.signUp),),

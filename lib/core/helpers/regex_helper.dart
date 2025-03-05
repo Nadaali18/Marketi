@@ -9,7 +9,7 @@ class RegexHelper {
     } else if (!RegExp(r'^[a-zA-Z]{2,}$').hasMatch(name)) {
       return 'Name must contain only letters and be at least 2 characters long';
     }
-    return ' ';
+    return null;
   }
 
   static String? validateUsername(String? username) {
@@ -18,7 +18,7 @@ class RegexHelper {
     } else if (!RegExp(r'^[a-zA-Z0-9_]+$').hasMatch(username)) {
       return 'Username can only contain letters, numbers, and underscores';
     }
-    return ' ';
+    return null;
   }
 
   static String? validateEmail(String? email) {
@@ -28,7 +28,7 @@ class RegexHelper {
         .hasMatch(email)) {
       return 'Enter a valid email address';
     }
-    return ' ';
+    return null;
   }
 
   static String? validatePassword(String? password) {
@@ -45,14 +45,15 @@ class RegexHelper {
     } else if (!RegExp(r'(?=.*[@$!%*?&])').hasMatch(password)) {
       return 'Password must contain at least one special character (@\$!%*?&)';
     }
-    return ' ';
+    return null;
   }
 
   static void submitForm(GlobalKey<FormState> key, BuildContext context, String location) {
     if (key.currentState == null || !key.currentState!.validate()) {
       return; 
     }
-   context.go(location); 
+      key.currentState!.save();
+      context.go(location);
 }
 
   
